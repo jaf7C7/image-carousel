@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			#carousel {
+				display: flex;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.selected {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<section id="carousel">
+			<button id="prevButton">Previous</button>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/one/600/450"
+				alt="Random Image"
+			/>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/two/600/450"
+				alt="Random Image"
+			/>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/three/600/450"
+				alt="Random Image"
+			/>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/four/600/450"
+				alt="Random Image"
+			/>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/five/600/450"
+				alt="Random Image"
+			/>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/six/600/450"
+				alt="Random Image"
+			/>
+			<img
+				class="hidden"
+				src="https://picsum.photos/seed/seven/600/450"
+				alt="Random Image"
+			/>
+			<button id="nextButton">Next</button>
+		</section>
+		<script>
+			window.addEventListener("load", () => {
+				const images = document.querySelectorAll("#carousel img");
+				let currentIndex = 0;
+				images[currentIndex].classList.add("selected");
+
+				const makeImageSelector = (indexOffset) => {
+					return () => {
+						images[currentIndex].classList.remove("selected");
+						currentIndex = (currentIndex + indexOffset) % images.length;
+						if (currentIndex < 0)
+							currentIndex += images.length;
+						images[currentIndex].classList.add("selected");
+					};
+				};
+
+				document
+					.getElementById("prevButton")
+					.addEventListener("click", makeImageSelector(-1));
+				document
+					.getElementById("nextButton")
+					.addEventListener("click", makeImageSelector(1));
+			});
+		</script>
+	</body>
+</html>
