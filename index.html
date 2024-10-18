@@ -19,48 +19,49 @@
 		</style>
 	</head>
 	<body>
-		<section id="carousel">
-			<button id="prevButton">Previous</button>
+		<h1>Image Carousel</h1>
+		<section class="carousel">
+			<button class="carousel__btn carousel__btn--prev" value="previous"></button>
+			<button class="carousel__btn carousel__btn--next" value="next"></button>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/one/600/450"
 				alt="Random Image"
 			/>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/two/600/450"
 				alt="Random Image"
 			/>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/three/600/450"
 				alt="Random Image"
 			/>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/four/600/450"
 				alt="Random Image"
 			/>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/five/600/450"
 				alt="Random Image"
 			/>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/six/600/450"
 				alt="Random Image"
 			/>
 			<img
-				class="hidden"
+				class="carousel__img hidden"
 				src="https://picsum.photos/seed/seven/600/450"
 				alt="Random Image"
 			/>
-			<button id="nextButton">Next</button>
 		</section>
 		<script>
 			window.addEventListener("load", () => {
-				const images = document.querySelectorAll("#carousel img");
+				const images = document.querySelectorAll(".carousel__img");
 				let currentIndex = 0;
 				images[currentIndex].classList.add("selected");
 
@@ -75,10 +76,10 @@
 				};
 
 				document
-					.getElementById("prevButton")
+					.querySelector('.carousel__btn--prev')
 					.addEventListener("click", makeImageSelector(-1));
 				document
-					.getElementById("nextButton")
+					.querySelector('.carousel__btn--next')
 					.addEventListener("click", makeImageSelector(1));
 			});
 		</script>
